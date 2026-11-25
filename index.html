@@ -22,7 +22,21 @@ header{position:sticky;top:0;z-index:10;background:#080d18eF;backdrop-filter:blu
 .logo span,.gradient{background:linear-gradient(90deg,#58b5ff,#8b82ff);background-clip:text;color:transparent}
 nav{display:flex;gap:27px;color:#aab8ce;font-size:14px}
 nav a:hover{color:white}
-.menu{display:none;background:none;border:0;color:white;font-size:25px}
+
+.menu{display:none;background:#17243a;border:1px solid #ffffff18;color:white;font-size:25px;width:46px;height:46px;border-radius:14px;cursor:pointer}
+.drawer-overlay{position:fixed;inset:0;background:#020611b8;backdrop-filter:blur(5px);z-index:30;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.drawer{position:fixed;z-index:31;right:0;top:0;width:min(370px,88vw);height:100dvh;padding:25px 20px;background:linear-gradient(155deg,#142642,#0b1120 72%);border-left:1px solid #568dff35;box-shadow:-20px 0 70px #0009;transform:translateX(105%);transition:transform .4s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;gap:13px}
+.drawer.open{transform:translateX(0)}
+.drawer-overlay.open{opacity:1;visibility:visible}
+.drawer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.drawer-title{font-size:23px;font-weight:850}
+.drawer-close{width:42px;height:42px;border:1px solid #ffffff18;border-radius:14px;background:#ffffff0b;color:white;font-size:25px;cursor:pointer}
+.drawer a{display:flex;align-items:center;gap:13px;padding:15px 16px;border:1px solid #ffffff10;border-radius:15px;background:linear-gradient(110deg,#ffffff0b,#ffffff04);color:#dce8ff;font-size:15px;transition:.2s}
+.drawer a:hover{border-color:#648dff88;background:#29487855;transform:translateX(-3px)}
+.drawer-icon{font-size:19px;width:25px;text-align:center}
+.drawer-bottom{margin-top:auto;padding:17px;border-radius:16px;background:linear-gradient(120deg,#18345a,#25204b);border:1px solid #668aff30;color:#aebfe0;font-size:13px}
+body.drawer-active{overflow:hidden}
+
 .hero{padding:115px 0 90px;text-align:center;position:relative;overflow:hidden}
 .hero:before{content:"";position:absolute;width:650px;height:450px;left:50%;top:0;transform:translateX(-50%);background:#246bc333;filter:blur(110px);pointer-events:none}
 .hero>*{position:relative}
@@ -67,23 +81,31 @@ details p{color:var(--muted);margin-top:12px;font-size:14px}
 .community p{color:var(--muted);margin:10px auto 22px}
 footer{border-top:1px solid var(--line);padding:35px 0;color:#71829b;font-size:13px}
 .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-@media(max-width:750px){nav{display:none;position:absolute;top:76px;left:0;right:0;background:#0b1423;padding:22px;flex-direction:column;gap:18px}.menu{display:block}.grid{grid-template-columns:1fr}.downloads{grid-template-columns:1fr}.preview{grid-template-columns:1fr}.shot{height:230px}.stats{gap:8px}.stat{padding:14px 8px}.stat strong{font-size:22px}.stat span{font-size:11px}.hero{padding-top:80px}section{padding:55px 0}.heading h2{font-size:30px}}
+@media(max-width:750px){.menu{display:block}.grid{grid-template-columns:1fr}.downloads{grid-template-columns:1fr}.preview{grid-template-columns:1fr}.shot{height:230px}.stats{gap:8px}.stat{padding:14px 8px}.stat strong{font-size:22px}.stat span{font-size:11px}.hero{padding-top:80px}section{padding:55px 0}.heading h2{font-size:30px}}
 </style>
 </head>
 <body>
 <header>
 <div class="container nav">
 <a class="logo" href="#">Astra<span>Gram</span></a>
-<nav id="nav">
-<a href="#features">Возможности</a>
-<a href="#downloads">Загрузки</a>
-<a href="#screens">Скриншоты</a>
-<a href="#updates">Обновления</a>
-<a href="#faq">FAQ</a>
-</nav>
-<button class="menu" onclick="document.getElementById('nav').style.display=document.getElementById('nav').style.display==='flex'?'none':'flex'">☰</button>
+<button class="menu" id="menuButton" aria-label="Открыть меню" aria-expanded="false">☰</button>
 </div>
 </header>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-top">
+    <div class="drawer-title">Astra<span class="gradient">Gram</span></div>
+    <button class="drawer-close" id="drawerClose" aria-label="Закрыть меню">×</button>
+  </div>
+  <a href="#features"><span class="drawer-icon">✦</span> Возможности</a>
+  <a href="#downloads"><span class="drawer-icon">↓</span> Загрузки</a>
+  <a href="#screens"><span class="drawer-icon">▣</span> Скриншоты</a>
+  <a href="#updates"><span class="drawer-icon">↻</span> Обновления</a>
+  <a href="#faq"><span class="drawer-icon">?</span> FAQ</a>
+  <a href="https://t.me/AstraGram_Project" target="_blank" rel="noopener"><span class="drawer-icon">➤</span> Telegram-канал</a>
+  <div class="drawer-bottom">💙 AstraGram — развиваемся вместе</div>
+</aside>
 
 <main>
 <div class="container hero">
@@ -198,5 +220,39 @@ document.getElementById('betaInfo').textContent='Ожидается первая
 }
 loadRelease();
 </script>
+
+<script>
+(() => {
+  const drawer = document.getElementById('drawer');
+  const overlay = document.getElementById('drawerOverlay');
+  const openButton = document.getElementById('menuButton');
+  const closeButton = document.getElementById('drawerClose');
+
+  function openMenu() {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    document.body.classList.add('drawer-active');
+    drawer.setAttribute('aria-hidden', 'false');
+    openButton.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMenu() {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    document.body.classList.remove('drawer-active');
+    drawer.setAttribute('aria-hidden', 'true');
+    openButton.setAttribute('aria-expanded', 'false');
+  }
+
+  openButton.addEventListener('click', openMenu);
+  closeButton.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  drawer.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeMenu();
+  });
+})();
+</script>
+
 </body>
 </html>
