@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cudokot73-bot.github.io/AstraGram/sitemap.xml

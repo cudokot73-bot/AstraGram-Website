@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d18">
+<meta name="description" content="AstraGram — современный клиент Telegram.">
+<title>AstraGram — Official Website</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#080d18;color:#f4f7ff;line-height:1.6}
+header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 8%;border-bottom:1px solid #ffffff12}
+.logo{font-size:25px;font-weight:800;letter-spacing:-1px}
+.logo span{color:#489cff}
+nav a{color:#aab8d0;text-decoration:none;margin-left:25px;font-size:14px}
+.hero{max-width:1050px;margin:110px auto 90px;padding:0 25px;text-align:center}
+.tag{display:inline-block;border:1px solid #245a91;color:#75b8ff;padding:7px 15px;border-radius:30px;font-size:12px}
+h1{font-size:clamp(48px,9vw,88px);line-height:1.08;margin:25px 0}
+h1 span{background:linear-gradient(90deg,#55aaff,#8c83ff);background-clip:text;color:transparent}
+.hero p{color:#9eabc1;max-width:580px;margin:0 auto;font-size:17px}
+.buttons{display:flex;justify-content:center;gap:14px;margin-top:35px;flex-wrap:wrap}
+.btn{padding:14px 25px;border-radius:12px;text-decoration:none;font-weight:bold}
+.primary{background:#318cf5;color:white}
+.secondary{border:1px solid #293b57;color:#dce8ff}
+section{max-width:1050px;margin:0 auto;padding:65px 25px}
+.section-title{text-align:center;font-size:34px;margin-bottom:35px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:#101a2b;border:1px solid #ffffff12;border-radius:17px;padding:25px}
+.card h3{margin-bottom:9px}
+.card p,.muted{color:#9eabc1;font-size:14px}
+.download{border:1px solid #23446b;background:linear-gradient(130deg,#102b4c,#11182b);border-radius:22px;text-align:center;padding:45px 20px}
+.download h2{font-size:32px;margin-bottom:10px}
+.status{color:#71b5ff;font-size:12px;margin-bottom:10px}
+footer{text-align:center;padding:35px;color:#66758d;border-top:1px solid #ffffff12;font-size:13px}
+@media(max-width:600px){header{padding:0 5%}nav a{margin-left:12px;font-size:12px}.hero{margin:75px auto 50px}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">Astra<span>Gram</span></div>
+<nav><a href="#features">Возможности</a><a href="#download">Скачать</a><a href="#changelog">Обновления</a></nav>
+</header>
+
+<main>
+<div class="hero">
+<div class="tag">✦ ANDROID CLIENT</div>
+<h1>Welcome to<br><span>AstraGram</span></h1>
+<p>Новый взгляд на привычный Telegram. Собственный стиль, дополнительные возможности и развитие вместе с сообществом.</p>
+<div class="buttons">
+<a class="btn primary" href="#download">Скачать Beta</a>
+<a class="btn secondary" href="#features">Подробнее</a>
+</div>
+</div>
+
+<section id="features">
+<h2 class="section-title">Возможности</h2>
+<div class="cards">
+<div class="card"><h3>✦ Уникальный стиль</h3><p>Собственный дизайн и персонализация интерфейса.</p></div>
+<div class="card"><h3>⚡ Дополнительные функции</h3><p>Новые инструменты и экспериментальные возможности.</p></div>
+<div class="card"><h3>🔄 Регулярные обновления</h3><p>Развитие проекта и исправление ошибок.</p></div>
+</div>
+</section>
+
+<section id="download">
+<div class="download">
+<div class="status">BETA CHANNEL</div>
+<h2>AstraGram Beta</h2>
+<p class="muted">Экспериментальная версия для тестирования.</p>
+<div class="buttons">
+<a class="btn primary" href="#" onclick="alert('APK пока не опубликован. Скоро появится здесь.');return false;">Скачать APK</a>
+</div>
+<p class="muted" style="margin-top:18px">Версия: готовится к публикации</p>
+</div>
+</section>
+
+<section id="changelog">
+<h2 class="section-title">Changelog</h2>
+<div class="card">
+<h3>Первый публичный релиз</h3>
+<p>Сайт AstraGram создан. Beta-версия готовится к публикации.</p>
+</div>
+</section>
+</main>
+
+<footer>© 2026 AstraGram Project. Not affiliated with Telegram.</footer>
+</body>
+</html>
