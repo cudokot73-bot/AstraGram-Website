@@ -2,86 +2,201 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080d18">
-<meta name="description" content="AstraGram — современный клиент Telegram.">
+<meta name="description" content="AstraGram — Android-клиент Telegram с дополнительными возможностями, персонализацией и собственными обновлениями.">
+<meta name="keywords" content="AstraGram, Telegram mod, Android, AstraGram Beta, Telegram клиент">
+<meta property="og:title" content="AstraGram — Official Website">
+<meta property="og:description" content="Больше возможностей. Больше контроля. Твой Telegram.">
 <title>AstraGram — Official Website</title>
 <style>
+:root{--bg:#080d18;--panel:#101a2b;--blue:#398fff;--text:#f4f7ff;--muted:#94a5bd;--line:#ffffff12}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#080d18;color:#f4f7ff;line-height:1.6}
-header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 8%;border-bottom:1px solid #ffffff12}
-.logo{font-size:25px;font-weight:800;letter-spacing:-1px}
-.logo span{color:#489cff}
-nav a{color:#aab8d0;text-decoration:none;margin-left:25px;font-size:14px}
-.hero{max-width:1050px;margin:110px auto 90px;padding:0 25px;text-align:center}
-.tag{display:inline-block;border:1px solid #245a91;color:#75b8ff;padding:7px 15px;border-radius:30px;font-size:12px}
-h1{font-size:clamp(48px,9vw,88px);line-height:1.08;margin:25px 0}
-h1 span{background:linear-gradient(90deg,#55aaff,#8c83ff);background-clip:text;color:transparent}
-.hero p{color:#9eabc1;max-width:580px;margin:0 auto;font-size:17px}
-.buttons{display:flex;justify-content:center;gap:14px;margin-top:35px;flex-wrap:wrap}
-.btn{padding:14px 25px;border-radius:12px;text-decoration:none;font-weight:bold}
-.primary{background:#318cf5;color:white}
-.secondary{border:1px solid #293b57;color:#dce8ff}
-section{max-width:1050px;margin:0 auto;padding:65px 25px}
-.section-title{text-align:center;font-size:34px;margin-bottom:35px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-.card{background:#101a2b;border:1px solid #ffffff12;border-radius:17px;padding:25px}
-.card h3{margin-bottom:9px}
-.card p,.muted{color:#9eabc1;font-size:14px}
-.download{border:1px solid #23446b;background:linear-gradient(130deg,#102b4c,#11182b);border-radius:22px;text-align:center;padding:45px 20px}
-.download h2{font-size:32px;margin-bottom:10px}
-.status{color:#71b5ff;font-size:12px;margin-bottom:10px}
-footer{text-align:center;padding:35px;color:#66758d;border-top:1px solid #ffffff12;font-size:13px}
-@media(max-width:600px){header{padding:0 5%}nav a{margin-left:12px;font-size:12px}.hero{margin:75px auto 50px}}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.65}
+a{color:inherit;text-decoration:none}
+.container{width:min(1120px,90%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:#080d18eF;backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:25px;font-weight:850;letter-spacing:-1px}
+.logo span,.gradient{background:linear-gradient(90deg,#58b5ff,#8b82ff);background-clip:text;color:transparent}
+nav{display:flex;gap:27px;color:#aab8ce;font-size:14px}
+nav a:hover{color:white}
+.menu{display:none;background:none;border:0;color:white;font-size:25px}
+.hero{padding:115px 0 90px;text-align:center;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;width:650px;height:450px;left:50%;top:0;transform:translateX(-50%);background:#246bc333;filter:blur(110px);pointer-events:none}
+.hero>*{position:relative}
+.pill{display:inline-block;padding:7px 15px;border:1px solid #32659a;border-radius:30px;color:#83bdff;font-size:12px;letter-spacing:1px}
+h1{font-size:clamp(48px,9vw,88px);line-height:1.08;letter-spacing:-3px;margin:27px 0}
+.hero p{max-width:650px;margin:auto;color:var(--muted);font-size:18px}
+.actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 25px;border-radius:12px;font-weight:750;transition:.2s}
+.btn:hover{transform:translateY(-3px)}
+.primary{background:linear-gradient(100deg,#278cf5,#5577ff);color:white;box-shadow:0 8px 30px #287be344}
+.outline{border:1px solid #33445e;color:#e0eaff}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:75px}
+.stat,.card{background:linear-gradient(145deg,#121e32,#0e1727);border:1px solid var(--line);border-radius:18px;padding:23px}
+.stat strong{display:block;font-size:29px}
+.stat span{font-size:13px;color:var(--muted)}
+section{padding:78px 0}
+.heading{text-align:center;margin-bottom:38px}
+.heading h2{font-size:36px;letter-spacing:-1px}
+.heading p{color:var(--muted);margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card h3{font-size:18px;margin:8px 0}
+.card p{font-size:14px;color:var(--muted)}
+.symbol{font-size:27px}
+.downloads{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.version{background:linear-gradient(145deg,#122d50,#111a2c);border:1px solid #28517c;border-radius:22px;padding:30px}
+.version.original{background:linear-gradient(145deg,#172238,#111827);border-color:#34445b}
+.version .label{color:#85bcff;font-size:12px;letter-spacing:1.4px}
+.version h3{font-size:27px;margin:8px 0}
+.version p{color:var(--muted);font-size:14px}
+.version .btn{margin-top:22px;width:100%}
+.version .details{margin-top:18px;font-size:13px;color:#9db1ca}
+.preview{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.shot{height:310px;border:1px dashed #344b69;border-radius:19px;background:linear-gradient(145deg,#14243b,#0c1423);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:#8297b5}
+.update{display:flex;gap:20px;padding:22px;border:1px solid var(--line);background:var(--panel);border-radius:17px}
+.update .date{color:#75b5ff;font-size:13px;min-width:90px}
+.update p{color:var(--muted);font-size:14px}
+.faq{max-width:800px;margin:auto;display:grid;gap:12px}
+details{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:19px}
+summary{cursor:pointer;font-weight:700}
+details p{color:var(--muted);margin-top:12px;font-size:14px}
+.community{text-align:center;padding:42px 20px;border:1px solid #28517c;border-radius:22px;background:linear-gradient(120deg,#102a49,#12172b)}
+.community p{color:var(--muted);margin:10px auto 22px}
+footer{border-top:1px solid var(--line);padding:35px 0;color:#71829b;font-size:13px}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:750px){nav{display:none;position:absolute;top:76px;left:0;right:0;background:#0b1423;padding:22px;flex-direction:column;gap:18px}.menu{display:block}.grid{grid-template-columns:1fr}.downloads{grid-template-columns:1fr}.preview{grid-template-columns:1fr}.shot{height:230px}.stats{gap:8px}.stat{padding:14px 8px}.stat strong{font-size:22px}.stat span{font-size:11px}.hero{padding-top:80px}section{padding:55px 0}.heading h2{font-size:30px}}
 </style>
 </head>
 <body>
 <header>
-<div class="logo">Astra<span>Gram</span></div>
-<nav><a href="#features">Возможности</a><a href="#download">Скачать</a><a href="#changelog">Обновления</a></nav>
+<div class="container nav">
+<a class="logo" href="#">Astra<span>Gram</span></a>
+<nav id="nav">
+<a href="#features">Возможности</a>
+<a href="#downloads">Загрузки</a>
+<a href="#screens">Скриншоты</a>
+<a href="#updates">Обновления</a>
+<a href="#faq">FAQ</a>
+</nav>
+<button class="menu" onclick="document.getElementById('nav').style.display=document.getElementById('nav').style.display==='flex'?'none':'flex'">☰</button>
+</div>
 </header>
 
 <main>
-<div class="hero">
-<div class="tag">✦ ANDROID CLIENT</div>
-<h1>Welcome to<br><span>AstraGram</span></h1>
-<p>Новый взгляд на привычный Telegram. Собственный стиль, дополнительные возможности и развитие вместе с сообществом.</p>
-<div class="buttons">
-<a class="btn primary" href="#download">Скачать Beta</a>
-<a class="btn secondary" href="#features">Подробнее</a>
+<div class="container hero">
+<div class="pill">✦ ANDROID CLIENT · OFFICIAL WEBSITE</div>
+<h1>Telegram,<br><span class="gradient">but better.</span></h1>
+<p>AstraGram — собственный взгляд на привычный мессенджер. Дополнительные возможности, персонализация и развитие проекта вместе с сообществом.</p>
+<div class="actions">
+<a class="btn primary" href="#downloads">↓ &nbsp; Скачать AstraGram</a>
+<a class="btn outline" href="#features">Узнать больше</a>
+</div>
+<div class="stats">
+<div class="stat"><strong id="downloadCount">—</strong><span>Загрузок APK</span></div>
+<div class="stat"><strong>Android</strong><span>Платформа</span></div>
+<div class="stat"><strong>Beta</strong><span>Текущий канал</span></div>
 </div>
 </div>
 
 <section id="features">
-<h2 class="section-title">Возможности</h2>
-<div class="cards">
-<div class="card"><h3>✦ Уникальный стиль</h3><p>Собственный дизайн и персонализация интерфейса.</p></div>
-<div class="card"><h3>⚡ Дополнительные функции</h3><p>Новые инструменты и экспериментальные возможности.</p></div>
-<div class="card"><h3>🔄 Регулярные обновления</h3><p>Развитие проекта и исправление ошибок.</p></div>
+<div class="container">
+<div class="heading"><h2>Возможности</h2><p>Инструменты и функции проекта AstraGram</p></div>
+<div class="grid">
+<div class="card"><div class="symbol">✦</div><h3>Персонализация</h3><p>Собственный стиль интерфейса и настройки внешнего вида.</p></div>
+<div class="card"><div class="symbol">👻</div><h3>Ghost Mode</h3><p>Дополнительные настройки видимости и приватности — в разработке.</p></div>
+<div class="card"><div class="symbol">🎨</div><h3>Оформление</h3><p>Работа над темами, цветами и индивидуальным оформлением.</p></div>
+<div class="card"><div class="symbol">⚡</div><h3>Новые инструменты</h3><p>Экспериментальные функции в Beta-канале.</p></div>
+<div class="card"><div class="symbol">🔄</div><h3>Обновления</h3><p>Исправления, улучшения и новые версии приложения.</p></div>
+<div class="card"><div class="symbol">💙</div><h3>Сообщество</h3><p>Обратная связь и предложения пользователей.</p></div>
+</div>
 </div>
 </section>
 
-<section id="download">
-<div class="download">
-<div class="status">BETA CHANNEL</div>
-<h2>AstraGram Beta</h2>
-<p class="muted">Экспериментальная версия для тестирования.</p>
-<div class="buttons">
-<a class="btn primary" href="#" onclick="alert('APK пока не опубликован. Скоро появится здесь.');return false;">Скачать APK</a>
+<section id="downloads">
+<div class="container">
+<div class="heading"><h2>Загрузки</h2><p>Выбери версию AstraGram</p></div>
+<div class="downloads">
+<div class="version">
+<div class="label">EARLY ACCESS</div>
+<h3>AstraGram Beta</h3>
+<p>Экспериментальная версия. Новые изменения появляются здесь раньше.</p>
+<a class="btn primary" id="betaDownload" href="https://github.com/cudokot73-bot/AstraGram/releases">Скачать Beta</a>
+<div class="details" id="betaInfo">APK ещё не опубликован</div>
 </div>
-<p class="muted" style="margin-top:18px">Версия: готовится к публикации</p>
+<div class="version original">
+<div class="label">STABLE CHANNEL</div>
+<h3>AstraGram Original</h3>
+<p>Стабильная версия с проверенными изменениями.</p>
+<a class="btn outline" href="#updates">Скоро</a>
+<div class="details">Стабильный выпуск готовится</div>
+</div>
+</div>
 </div>
 </section>
 
-<section id="changelog">
-<h2 class="section-title">Changelog</h2>
-<div class="card">
-<h3>Первый публичный релиз</h3>
-<p>Сайт AstraGram создан. Beta-версия готовится к публикации.</p>
+<section id="screens">
+<div class="container">
+<div class="heading"><h2>Интерфейс приложения</h2><p>Скриншоты AstraGram появятся здесь</p></div>
+<div class="preview">
+<div class="shot">Скриншот главного экрана</div>
+<div class="shot">Скриншот настроек</div>
+<div class="shot">Скриншот чатов</div>
+</div>
+</div>
+</section>
+
+<section id="updates">
+<div class="container">
+<div class="heading"><h2>Changelog</h2><p>История развития AstraGram</p></div>
+<div class="update"><div class="date">26.11.2026</div><div><h3>Создание сайта</h3><p>Запущен официальный сайт AstraGram. Подготовлены разделы загрузок, возможностей и обновлений.</p></div></div>
+</div>
+</section>
+
+<section id="faq">
+<div class="container">
+<div class="heading"><h2>Частые вопросы</h2><p>Коротко о проекте</p></div>
+<div class="faq">
+<details><summary>Что такое AstraGram?</summary><p>AstraGram — сторонний Android-клиент на основе Telegram с собственными изменениями и дополнительными возможностями.</p></details>
+<details><summary>Чем отличаются Beta и Original?</summary><p>Beta предназначена для тестирования новых функций. Original будет стабильным каналом.</p></details>
+<details><summary>Как обновить приложение?</summary><p>После публикации новой версии APK его можно будет скачать с этой страницы и установить поверх совместимой предыдущей версии.</p></details>
+<details><summary>Где сообщить об ошибке?</summary><p>Раздел обратной связи и обсуждений будет добавлен отдельно.</p></details>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container community">
+<h2>Стань частью AstraGram</h2>
+<p>Следи за развитием проекта, тестируй Beta и делись предложениями.</p>
+<a class="btn primary" href="https://github.com/cudokot73-bot/AstraGram">GitHub проекта</a>
 </div>
 </section>
 </main>
 
-<footer>© 2026 AstraGram Project. Not affiliated with Telegram.</footer>
+<footer><div class="container foot"><span>© 2026 AstraGram Project</span><span>Independent third-party Telegram client. Not affiliated with Telegram.</span></div></footer>
+
+<script>
+async function loadRelease(){
+try{
+const r=await fetch('https://api.github.com/repos/cudokot73-bot/AstraGram/releases/latest');
+if(!r.ok)throw new Error('No release');
+const d=await r.json();
+const apk=d.assets.find(a=>a.name.toLowerCase().endsWith('.apk'));
+if(apk){
+document.getElementById('betaDownload').href=apk.browser_download_url;
+document.getElementById('betaInfo').textContent='Версия '+d.tag_name+' · '+(apk.size/1048576).toFixed(1)+' MB';
+document.getElementById('downloadCount').textContent=apk.download_count.toLocaleString('ru-RU');
+}else{
+document.getElementById('betaInfo').textContent='Релиз найден, APK пока не прикреплён';
+}
+}catch(e){
+document.getElementById('betaInfo').textContent='Ожидается первая публикация APK';
+}
+}
+loadRelease();
+</script>
 </body>
 </html>
