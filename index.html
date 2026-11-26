@@ -69,7 +69,7 @@ section{padding:78px 0}
 .version .btn{margin-top:22px;width:100%}
 .version .details{margin-top:18px;font-size:13px;color:#9db1ca}
 .preview{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.shot{height:310px;border:1px dashed #344b69;border-radius:19px;background:linear-gradient(145deg,#14243b,#0c1423);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:#8297b5}
+.shot{height:auto;border:1px solid #344b69;border-radius:19px;background:#0c1423;overflow:hidden;padding:0;box-shadow:0 8px 30px #0005}.shot img{display:block;width:100%;height:auto;object-fit:contain}
 .update{display:flex;gap:20px;padding:22px;border:1px solid var(--line);background:var(--panel);border-radius:17px}
 .update .date{color:#75b5ff;font-size:13px;min-width:90px}
 .update p{color:var(--muted);font-size:14px}
@@ -81,7 +81,7 @@ details p{color:var(--muted);margin-top:12px;font-size:14px}
 .community p{color:var(--muted);margin:10px auto 22px}
 footer{border-top:1px solid var(--line);padding:35px 0;color:#71829b;font-size:13px}
 .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-@media(max-width:750px){.menu{display:block}.grid{grid-template-columns:1fr}.downloads{grid-template-columns:1fr}.preview{grid-template-columns:1fr}.shot{height:230px}.stats{gap:8px}.stat{padding:14px 8px}.stat strong{font-size:22px}.stat span{font-size:11px}.hero{padding-top:80px}section{padding:55px 0}.heading h2{font-size:30px}}
+@media(max-width:750px){.menu{display:block}.grid{grid-template-columns:1fr}.downloads{grid-template-columns:1fr}.preview{grid-template-columns:1fr}.shot{height:auto}.stats{gap:8px}.stat{padding:14px 8px}.stat strong{font-size:22px}.stat span{font-size:11px}.hero{padding-top:80px}section{padding:55px 0}.heading h2{font-size:30px}}
 </style>
 </head>
 <body>
@@ -161,11 +161,11 @@ footer{border-top:1px solid var(--line);padding:35px 0;color:#71829b;font-size:1
 
 <section id="screens">
 <div class="container">
-<div class="heading"><h2>Интерфейс приложения</h2><p>Скриншоты AstraGram появятся здесь</p></div>
+<div class="heading"><h2>Интерфейс AstraGram</h2><p>Посмотри, как выглядит AstraGram</p></div>
 <div class="preview">
-<div class="shot">Скриншот главного экрана</div>
-<div class="shot">Скриншот настроек</div>
-<div class="shot">Скриншот чатов</div>
+<div class="shot"><img src="images/screenshot-chats.png" alt="Главный экран AstraGram со списком чатов" loading="lazy"></div>
+<div class="shot"><img src="images/screenshot-chat.png" alt="Переписка с другом в AstraGram" loading="lazy"></div>
+<div class="shot"><img src="images/screenshot-features.png" alt="Возможности и интерфейс AstraGram" loading="lazy"></div>
 </div>
 </div>
 </section>
